@@ -1,10 +1,5 @@
 ---
 # vars file for andrasfindt.brew-zsh
-iterm_environment:
-  - key: TERM_PROGRAM
-    value: iTerm.app
-  - key: TERM_PROGRAM_VERSION
-    value: "{{ lookup('file', '$HOME/Library/Application Support/iTerm2/version.txt' }}"
 
 iterm_packages:
   - name: iterm2
