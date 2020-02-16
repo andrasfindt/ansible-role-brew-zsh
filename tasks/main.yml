@@ -7,7 +7,7 @@
   homebrew_cask:
     name:
       - iterm2
-    state: upgraded
+    state: latest
     update_homebrew: yes
   when: homebrew_installed == true
 - name: Install zsh
@@ -16,7 +16,7 @@
       - zsh
       - zsh-completions
       - zsh-syntax-highlighting
-    state: upgraded
+    state: latest
     update_homebrew: yes
   when: homebrew_installed == true
 - name: Install oh-my-zsh
@@ -39,5 +39,5 @@
   file:
     src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
     dest: "~/Library/Fonts"
-    state: present
+    state: touch
 -
