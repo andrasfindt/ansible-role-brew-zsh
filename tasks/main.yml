@@ -1,15 +1,15 @@
 ---
 # tasks file for andras.brew-zsh
-- name: Ensure brew exists
-  raw: test -e  "{{ homebrew_brew_bin_path }}/brew" && echo true || echo false
-  register: homebrew_installed
+#- name: Ensure brew exists
+#  raw: test -e  "{{ homebrew_brew_bin_path }}/brew" && echo true || echo false
+#  register: homebrew_installed
 - name: Install iTerm2
   homebrew_cask:
     name:
       - iterm2
     state: latest
     update_homebrew: yes
-  when: homebrew_installed == true
+#  when: homebrew_installed == true
 - name: Install zsh
   homebrew:
     name:
@@ -18,7 +18,7 @@
       - zsh-syntax-highlighting
     state: latest
     update_homebrew: yes
-  when: homebrew_installed == true
+#  when: homebrew_installed == true
 - name: Install oh-my-zsh
   shell: "sh -c \"$(curl -fsSL {{ oh_my_fish_script }})\" \"\" --unattended"
   args:
@@ -36,8 +36,8 @@
     line: "export {{ item.key }}={{ item.value }}"
   with_items: "{{ iterm_environment }}"
 - name: Install Powerline font
-  file:
+  copy:
     src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
     dest: "~/Library/Fonts"
-    state: touch
--
+
+
