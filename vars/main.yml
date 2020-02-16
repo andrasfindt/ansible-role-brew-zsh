@@ -1,15 +1,16 @@
 ---
-# vars file for andras.brew-zsh
+# vars file for andrasfindt.brew-zsh
 iterm_environment:
   - key: TERM_PROGRAM
     value: iTerm.app
   - key: TERM_PROGRAM_VERSION
     value: 3.3.9
 
-brew_packages:
+iterm_packages:
+  - name: iterm2
+    install_options: 'appdir=/Applications'
+
+brew_zsh_packages:
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
-
-brew_cask_pacakges:
-  - iterm2
