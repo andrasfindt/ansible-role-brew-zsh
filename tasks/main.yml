@@ -42,5 +42,11 @@
   copy:
     src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
     dest: "~/Library/Fonts"
+- name: Install iTerm2 Profile
+  copy:
+    src: "com.googlecode.iterm2.plist"
+    dest: "$HOME/Library/Preferences/"
+
+
 
 
