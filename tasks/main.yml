@@ -15,29 +15,11 @@
   loop: "{{ brew_zsh_packages }}"
   notify:
     - Clear homebrew cache
-#
-#  homebrew:
-#    name: "{{ item.name | default(item) }}"
-#    install_options: "{{ item.install_options | default(omit) }}"
-#    state: present
-#  loop: "{{ homebrew_installed_packages }}"
-
 - name: Install oh-my-zsh
   shell: "sh -c \"$(curl -fsSL {{ oh_my_fish_script }})\" \"\" --unattended"
   args:
     creates: "$HOME/.oh-my-zsh/oh-my-zsh.sh"
   become: no
-#- name: Make iterm environment file
-#  file:
-#    path: "{{ iterm_env_path }}"
-#    state: touch
-#- name: Populate iterm environment file
-#  lineinfile:
-#    dest: "{{ iterm_env_path }}"
-#    state: present
-#    regexp: "^export {{ item.key }}="
-#    line: "export {{ item.key }}={{ item.value }}"
-#  with_items: "{{ iterm_environment }}"
 - name: Set iTerm2 as default terminal
   template:
     src: 0-iterm.zsh.j2
@@ -51,7 +33,19 @@
 - name: Install iTerm2 Profile
   copy:
     src: "com.googlecode.iterm2.plist"
-    dest: "$HOME/Library/Preferences/"
+    dest: "~/Library/Preferences/"
+- name: Install powerlevel10k oh-my-zsh theme
+  git:
+    repo: "{{ powerlevel10k_repo }}"
+    dest: "{{ powerlevel10k_path }}"
+- name: Populate powerlevel10k environment file
+  lineinfile:
+    dest: "{{ zshrc_path }}"
+    state: present
+    regexp: "^export {{ item.key }}="
+    line: "export {{ item.key }}={{ item.value }}"
+  with_items: "{{ powerlevel10k_env_vars }}"
+
 
 
 

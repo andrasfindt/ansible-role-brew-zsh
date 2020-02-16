@@ -9,3 +9,9 @@ brew_zsh_packages:
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
+
+powerlevel10k_env_vars:
+  - key: ZSH_THEME
+    value: "powerlevel10k/powerlevel10k"
+  - key: POWERLEVEL9K_MODE
+    value: "awesome-patched"
