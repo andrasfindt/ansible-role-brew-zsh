@@ -1,2 +1,9 @@
 ---
-# defaults file for andrasfindt.brew-zsh
+
+homebrew_prefix: /usr/local
+homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
+homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
+
+oh_my_fish_script: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+
+iterm_env_path: $HOME/.oh-my-zsh/custom/0-iterm.zsh

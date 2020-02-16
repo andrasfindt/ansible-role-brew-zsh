@@ -1,2 +1,7 @@
 ---
-# vars file for andrasfindt.brew-zsh
+# vars file for andras.brew-zsh
+iterm_environment:
+  - key: TERM_PROGRAM
+    value: iTerm.app
+  - key: TERM_PROGRAM_VERSION
+    value: 3.3.9
