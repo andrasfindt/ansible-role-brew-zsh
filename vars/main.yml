@@ -16,4 +16,4 @@ powerlevel10k_env_vars:
   - key: POWERLEVEL9K_MODE
     value: "awesome-patched"
 
-oh_my_zsh_pligins: "brew git bundler ruby zsh-autosuggestions"
+oh_my_zsh_pligins: "git bundler ruby zsh-autosuggestions"
