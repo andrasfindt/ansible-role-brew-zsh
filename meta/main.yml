@@ -2,8 +2,8 @@
 dependencies:
   - geerlingguy.homebrew
 galaxy_info:
-  author: Andras Findt
-  description: Installs iTerm and zsh+oh_my_zsh
+  author: "Andras Findt"
+  description: "Installs iTerm and zsh+oh_my_zsh"
   license: "license (BSD, MIT)"
 
   min_ansible_version: 2.9
