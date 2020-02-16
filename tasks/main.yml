@@ -1,6 +1,6 @@
 ---
 # tasks file for andrasfindt.brew-zsh
-- name: Install iTerm2
+- name: Install iTerm2 and mysides (Finder sidebar editor)
   homebrew_cask:
     name: "{{ item.name | default(item) }}"
     install_options: "{{ item.install_options | default(omit) }}"
@@ -8,6 +8,12 @@
   loop: "{{ iterm_packages }}"
   notify:
     - Clear homebrew cache
+- name: Check if user home is on sidebar
+  command: "mysides list | grep -i '^{{ username }} ->'"
+  register: home_on_sidebar
+- name: Add user home to Finder sidebar
+  command: "mysides add {{ username }} file:///User/{{ username }}/"
+  when: home_on_sidebar.stdout == ""
 - name: Install zsh packages
   homebrew:
     name: "{{ item }}"
