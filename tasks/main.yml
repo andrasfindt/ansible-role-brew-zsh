@@ -7,17 +7,11 @@
   homebrew_cask:
     name:
       - iterm2
-    state: latest
-    update_homebrew: yes
 #  when: homebrew_installed == true
-- name: Install zsh
+- name: Install zsh packages
   homebrew:
-    name:
-      - zsh
-      - zsh-completions
-      - zsh-syntax-highlighting
-    state: latest
-    update_homebrew: yes
+    name: "{{ item }}"
+  with_items: "{{ brew_packages }}"
 #  when: homebrew_installed == true
 - name: Install oh-my-zsh
   shell: "sh -c \"$(curl -fsSL {{ oh_my_fish_script }})\" \"\" --unattended"

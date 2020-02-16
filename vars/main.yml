@@ -5,3 +5,11 @@ iterm_environment:
     value: iTerm.app
   - key: TERM_PROGRAM_VERSION
     value: 3.3.9
+
+brew_packages:
+  - zsh
+  - zsh-completions
+  - zsh-syntax-highlighting
+
+brew_cask_pacakges:
+  - iterm2
