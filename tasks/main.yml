@@ -58,9 +58,9 @@
         source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
       fi
 - name: Install powerlevel10k config
-    copy:
-      src: "p10k.zsh"
-      dest: "~/.p10k.zsh"
+  copy:
+    src: "p10k.zsh"
+    dest: "~/.p10k.zsh"
 - name: Install powerlevel10k config to .zshrc
   blockinfile:
     insertafter: EOF
