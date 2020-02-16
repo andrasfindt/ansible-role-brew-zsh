@@ -27,17 +27,22 @@
   args:
     creates: "$HOME/.oh-my-zsh/oh-my-zsh.sh"
   become: no
-- name: Make iterm environment file
-  file:
-    path: "{{ iterm_env_path }}"
-    state: touch
-- name: Populate iterm environment file
-  lineinfile:
+#- name: Make iterm environment file
+#  file:
+#    path: "{{ iterm_env_path }}"
+#    state: touch
+#- name: Populate iterm environment file
+#  lineinfile:
+#    dest: "{{ iterm_env_path }}"
+#    state: present
+#    regexp: "^export {{ item.key }}="
+#    line: "export {{ item.key }}={{ item.value }}"
+#  with_items: "{{ iterm_environment }}"
+- name: Set iTerm2 as default terminal
+  template:
+    src: 0-iterm.zsh.j2
     dest: "{{ iterm_env_path }}"
-    state: present
-    regexp: "^export {{ item.key }}="
-    line: "export {{ item.key }}={{ item.value }}"
-  with_items: "{{ iterm_environment }}"
+    iterm_version: "{{ lookup('file', '$HOME/Library/Application Support/iTerm2/version.txt' }}"
 - name: Install Powerline font
   copy:
     src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
