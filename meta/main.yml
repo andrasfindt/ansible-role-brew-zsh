@@ -5,12 +5,12 @@ galaxy_info:
   author: "Andras Findt"
   description: "Installs iTerm and zsh+oh_my_zsh"
   license: "license (BSD, MIT)"
-
+  version: 0.0.1
   min_ansible_version: 2.9
-   platforms:
-   - name: Darwin
-     versions:
-     - all
+  platforms:
+    - name: Darwin
+      versions:
+        - all
   galaxy_tags:
     - osx
     - brew
