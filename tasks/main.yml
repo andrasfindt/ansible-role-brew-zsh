@@ -40,7 +40,11 @@
     state: present
     regexp: "^plugins=\\(.*\\)$"
     line: "plugins=({{ oh_my_zsh_pligins }})"
-
+- name: Install zsh-autosuggestions plugin
+  git:
+    repo: "{{ zsh_autosuggestions_repo }}"
+    dest: "{{ zsh_autosuggestions_path }}"
+    depth: 1
 - name: Install powerlevel10k oh-my-zsh theme
   git:
     repo: "{{ powerlevel10k_repo }}"
