@@ -7,3 +7,4 @@ homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
 oh_my_fish_script: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 
 iterm_env_path: $HOME/.oh-my-zsh/custom/0-iterm.zsh
+iterm_version_path: $HOME/Library/ApplicationSupport/iTerm2/version.txt

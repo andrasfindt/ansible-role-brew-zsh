@@ -42,7 +42,7 @@
   template:
     src: 0-iterm.zsh.j2
     dest: "{{ iterm_env_path }}"
-    iterm_version: "{{ lookup('file', \"$HOME/Library/ApplicationSupport/iTerm2/version.txt\") }}"
+    iterm_version: "{{ lookup('file', iterm_version_path ) }}"
 - name: Install Powerline font
   copy:
     src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
