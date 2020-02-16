@@ -1,6 +1,7 @@
 ---
 # tasks file for andrasfindt.brew-zsh
-- name: Install iTerm2 and mysides (Finder sidebar editor)
+
+- name: Install iTerm2
   homebrew_cask:
     name: "{{ item.name | default(item) }}"
     install_options: "{{ item.install_options | default(omit) }}"
@@ -8,12 +9,7 @@
   loop: "{{ iterm_packages }}"
   notify:
     - Clear homebrew cache
-- name: Check if user home is on sidebar
-  command: "mysides list | grep -i '^{{ username }} ->'"
-  register: home_on_sidebar
-- name: Add user home to Finder sidebar
-  command: "mysides add {{ username }} file:///User/{{ username }}/"
-  when: home_on_sidebar.stdout == ""
+
 - name: Install zsh packages
   homebrew:
     name: "{{ item }}"
@@ -21,21 +17,25 @@
   loop: "{{ brew_zsh_packages }}"
   notify:
     - Clear homebrew cache
+
 - name: Install oh-my-zsh
   shell: "sh -c \"$(curl -fsSL {{ oh_my_fish_script }})\" \"\" --unattended"
   args:
     creates: "$HOME/.oh-my-zsh/oh-my-zsh.sh"
   become: no
+
 - name: Set iTerm2 as default terminal
   template:
     src: 0-iterm.zsh.j2
     dest: "{{ iterm_env_path }}"
   vars:
     iterm_version: "{{ lookup('file', iterm_version_path ) }}"
+
 - name: Install Powerline font
   copy:
     src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
     dest: "~/Library/Fonts"
+
 - name: Install iTerm2 Profile
   copy:
     src: "com.googlecode.iterm2.plist"
@@ -46,16 +46,19 @@
     state: present
     regexp: "^plugins=\\(.*\\)$"
     line: "plugins=({{ oh_my_zsh_pligins }})"
+
 - name: Install zsh-autosuggestions plugin
   git:
     repo: "{{ zsh_autosuggestions_repo }}"
     dest: "{{ zsh_autosuggestions_path }}"
     depth: 1
+
 - name: Install powerlevel10k oh-my-zsh theme
   git:
     repo: "{{ powerlevel10k_repo }}"
     dest: "{{ powerlevel10k_path }}"
     depth: 1
+
 - name: Populate powerlevel10k environment file
   lineinfile:
     dest: "{{ zshrc_path }}"
@@ -63,6 +66,7 @@
     regexp: "^(export )?{{ item.key }}="
     line: "export {{ item.key }}={{ item.value }}"
   with_items: "{{ powerlevel10k_env_vars }}"
+
 - name: Add powerlevel10k instant prompt config to .zshrc
   blockinfile:
     insertbefore: BOF
@@ -75,10 +79,12 @@
       if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
         source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
       fi
+
 - name: Install powerlevel10k config
   copy:
     src: "p10k.zsh"
     dest: "~/.p10k.zsh"
+
 - name: Install powerlevel10k config to .zshrc
   blockinfile:
     insertafter: EOF
@@ -87,6 +93,7 @@
     block: |
       # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 - name: Activate zsh syntax highlighting
   lineinfile:
     dest: "{{ zshrc_path }}"

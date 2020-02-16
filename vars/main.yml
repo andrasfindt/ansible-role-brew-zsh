@@ -4,7 +4,6 @@
 iterm_packages:
   - name: iterm2
     install_options: 'appdir=/Applications'
-  - name: mysides
 
 brew_zsh_packages:
   - zsh
