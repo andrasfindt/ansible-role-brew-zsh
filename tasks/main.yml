@@ -38,6 +38,7 @@
   git:
     repo: "{{ powerlevel10k_repo }}"
     dest: "{{ powerlevel10k_path }}"
+    depth: 1
 - name: Populate powerlevel10k environment file
   lineinfile:
     dest: "{{ zshrc_path }}"
