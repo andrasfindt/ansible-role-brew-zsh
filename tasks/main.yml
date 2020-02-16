@@ -14,8 +14,9 @@
   homebrew:
     name:
       - zsh
+      - zsh-completions
       - zsh-syntax-highlighting
-    state: present
+    state: upgraded
     update_homebrew: yes
   when: homebrew_installed == true
 - name: Install oh-my-zsh
@@ -23,16 +24,20 @@
   args:
     creates: "$HOME/.oh-my-zsh/oh-my-zsh.sh"
   become: no
-- name: make iterm environment file
+- name: Make iterm environment file
   file:
     path: "{{ iterm_env_path }}"
     state: touch
-- name: populate iterm environment file
+- name: Populate iterm environment file
   lineinfile:
     dest: "{{ iterm_env_path }}"
     state: present
     regexp: "^export {{ item.key }}="
     line: "export {{ item.key }}={{ item.value }}"
   with_items: "{{ iterm_environment }}"
-
-#  zsh-autosuggestions
+- name: Install Powerline font
+  file:
+    src: "SourceCodePro+Powerline+Awesome+Regular.ttf"
+    dest: "~/Library/Fonts"
+    state: present
+-
