@@ -38,7 +38,7 @@
   lineinfile:
     dest: "{{ zshrc_path }}"
     state: present
-    regexp: "^plugins=\(.*\)$"
+    regexp: "^plugins=\\(.*\\)$"
     line: "plugins=({{ oh_my_zsh_pligins }})"
 
 - name: Install powerlevel10k oh-my-zsh theme
@@ -81,6 +81,6 @@
   lineinfile:
     dest: "{{ zshrc_path }}"
     state: present
-    regexp: "^source \/usr\/local\/share\/zsh\-syntax\-highlighting\/zsh\-syntax\-highlighting\.zsh$"
+    regexp: "^source \\/usr\\/local\\/share\\/zsh\\-syntax\\-highlighting\\/zsh\\-syntax\\-highlighting\\.zsh$"
     line: "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
