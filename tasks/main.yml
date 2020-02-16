@@ -43,7 +43,7 @@
   lineinfile:
     dest: "{{ zshrc_path }}"
     state: present
-    regexp: "^export {{ item.key }}="
+    regexp: "^(export )?{{ item.key }}="
     line: "export {{ item.key }}={{ item.value }}"
   with_items: "{{ powerlevel10k_env_vars }}"
 
