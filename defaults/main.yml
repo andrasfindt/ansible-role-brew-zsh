@@ -10,6 +10,7 @@ oh_my_zsh_custom_path: ~/.oh-my-zsh/custom
 
 powerlevel10k_repo: https://github.com/romkatv/powerlevel10k.git
 powerlevel10k_path: "{{ oh_my_zsh_custom_path }}/themes/powerlevel10k"
+powerlevel10k_use_default_config: true
 
 iterm_env_path: "{{ oh_my_zsh_custom_path }}/0-iterm.zsh"
 iterm_version_path: ~/Library/ApplicationSupport/iTerm2/version.txt

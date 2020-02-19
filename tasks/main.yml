@@ -101,3 +101,11 @@
     regexp: "^source \\/usr\\/local\\/share\\/zsh\\-syntax\\-highlighting\\/zsh\\-syntax\\-highlighting\\.zsh$"
     line: "source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+
+- name: Activate zshnavigationtools
+  lineinfile:
+    dest: "{{ zshrc_path }}"
+    state: present
+    regexp: "^source \\/usr\\/local\\/share\\/zsh\\-navigation\\-tools\\/zsh\\-navigation\\-tools\\.plugin\\.zsh$"
+    line: "source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh"
+

@@ -9,6 +9,7 @@ brew_zsh_packages:
   - zsh
   - zsh-completions
   - zsh-syntax-highlighting
+  - zsh-navigation-tools
 
 powerlevel10k_env_vars:
   - key: ZSH_THEME
