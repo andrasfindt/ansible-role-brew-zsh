@@ -9,6 +9,11 @@ font_packages:
   - name: font-sauce-code-pro-nerd-font
 #    install_options: 'appdir=/Applications'
 
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask-fonts
+
 brew_zsh_packages:
   - zsh
   - zsh-completions
