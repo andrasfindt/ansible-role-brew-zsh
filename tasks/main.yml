@@ -31,12 +31,12 @@
     creates: "$HOME/.oh-my-zsh/oh-my-zsh.sh"
   become: no
 
-- name: Set iTerm2 as default terminal
-  template:
-    src: 0-iterm.zsh.j2
-    dest: "{{ iterm_env_path }}"
-  vars:
-    iterm_version: "\`cat {{ iterm_version_path }}\`"
+#- name: Set iTerm2 as default terminal
+#  template:
+#    src: 0-iterm.zsh.j2
+#    dest: "{{ iterm_env_path }}"
+#  vars:
+#    iterm_version: "\`cat {{ iterm_version_path }}\`"
 
 - name: Install iTerm2 Profile
   copy:
