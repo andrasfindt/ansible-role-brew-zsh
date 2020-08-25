@@ -5,6 +5,10 @@ iterm_packages:
   - name: iterm2
     install_options: 'appdir=/Applications'
 
+font_packages:
+  - name: font-sauce-code-pro-nerd-font
+#    install_options: 'appdir=/Applications'
+
 brew_zsh_packages:
   - zsh
   - zsh-completions
